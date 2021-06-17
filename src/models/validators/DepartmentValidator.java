@@ -38,7 +38,7 @@ public class DepartmentValidator {
         }
         // 型桁チェック
         //未記入(RegexUtilクラスのhalfWidthNumberCheckメソッドを呼び出して、戻り値（チェック結果）を取得する。)
-        if(department_code.length()<10){
+        if(department_code.length()<2 && department_code.length()>2){
         	return "部署コードは半角数字２桁で入力してください";
         }
 
@@ -47,7 +47,7 @@ public class DepartmentValidator {
         	//EntityManagerオブジェクトにDBUtilクラスのcreateEntityManagerメソッドの戻り値を代入する
             EntityManager em = DBUtil.createEntityManager();
             //データ件数を取得
-            long departments_count = (long)em.createNamedQuery("checkRegisteredDepartmentCode", Long.class).setParameter("departmment_code",department_code ).getSingleResult();
+            long departments_count = (long)em.createNamedQuery("checkRegisteredDepartmentCode", Long.class).setParameter("department_code",department_code ).getSingleResult();
             em.close();
             if(departments_count > 0) {
                 return "入力された部署コードの情報はすでに存在しています。";

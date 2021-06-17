@@ -56,6 +56,12 @@ public class Department {
     private Integer is_deleted;
 
     //ゲッターとセッター
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 	public String getDepartment_code() {
 		return department_code;
 	}

@@ -7,7 +7,7 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>従業員　一覧</h2>
+        <h2>部署データ　一覧</h2>
         <table id="department_list">
             <tbody>
                 <tr>
@@ -21,7 +21,7 @@
                         <td><c:out value="${department.department_name}" /></td>
                         <td>
                             <c:choose>
-                                <c:when test="${department.delete_flag == 1}">
+                                <c:when test="${department.is_deleted == 1}">
                                     （削除済み）
                                 </c:when>
                                 <c:otherwise>
@@ -35,7 +35,8 @@
         </table>
 
         <div id="pagination">
-            （全 ${departments_count} 件）<br />
+            <p>（全 ${departments_count} 件）</p>
+            <br />
             <c:forEach var="i" begin="1" end="${((departments_count - 1) / 15) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">
