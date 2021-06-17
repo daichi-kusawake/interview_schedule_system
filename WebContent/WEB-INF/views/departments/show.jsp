@@ -5,7 +5,7 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${department != null}">
-                <h2>id : ${department.id} の部署情報　詳細ページ</h2>
+                <h2>ID : ${department.id} の部署情報　詳細ページ</h2>
 
                 <table>
                     <tbody>
