@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Department;
 import models.Employee;
 import models.validators.EmployeeValidator;
 import utils.DBUtil;
@@ -41,14 +42,16 @@ public class EmployeesCreateServlet extends HttpServlet {
 
             Employee e = new Employee();
 
-            e.setEmployee_code(request.getParameter("code"));
-            e.setEmployee_name(request.getParameter("name"));
+            e.setEmployee_code(request.getParameter("employee_code"));
+            e.setEmployee_name(request.getParameter("employee_name"));
+
             e.setPassword(
                 EncryptUtil.getPasswordEncrypt(
                     request.getParameter("password"),
                         (String)this.getServletContext().getAttribute("pepper")
                     )
                 );
+
             e.setAdmin_flag(Integer.parseInt(request.getParameter("admin_flag")));
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
@@ -56,10 +59,20 @@ public class EmployeesCreateServlet extends HttpServlet {
             e.setUpdated_at(currentTime);
             e.setIs_deleted(0);
 
+            // Department情報の設定
+            Department department = em.find(Department.class,
+                    Integer.parseInt(request.getParameter("department_id")));
+            e.setDepartment(department);
+
+
             List<String> errors = EmployeeValidator.validate(e, true, true);
             if(errors.size() > 0) {
+                // 部署名一覧表示のため部署情報テーブルのデータを取得する
+                List<Department> departments = em.createNamedQuery("getAllDepartmentsNotDeleted", Department.class).getResultList();
                 em.close();
 
+                //リクエストスコープにパラメータをセット
+                request.setAttribute("departments", departments);
                 request.setAttribute("_token", request.getSession().getId());
                 request.setAttribute("employee", e);
                 request.setAttribute("errors", errors);
