@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 
 import models.Department;
 import utils.DBUtil;
+import utils.RegexUtil;
 
 public class DepartmentValidator {
 
@@ -38,7 +39,7 @@ public class DepartmentValidator {
         }
         // 型桁チェック
         //未記入(RegexUtilクラスのhalfWidthNumberCheckメソッドを呼び出して、戻り値（チェック結果）を取得する。)
-        if(department_code.length()<2 && department_code.length()>2){
+        if(department_code.length()!=2||!RegexUtil.halfWidthNumberCheck(department_code)){
         	return "部署コードは半角数字２桁で入力してください";
         }
 
