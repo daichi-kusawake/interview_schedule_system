@@ -23,13 +23,14 @@ public class DepartmentsNewServlet extends HttpServlet {
      */
     public DepartmentsNewServlet() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		//リクエストスコープにデータをセット
 		request.setAttribute("_token", request.getSession().getId());
         request.setAttribute("department", new Department());
