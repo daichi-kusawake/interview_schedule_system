@@ -31,6 +31,11 @@ import javax.persistence.Table;
             name = "checkLoginEmployeeCodeAndPassword",
             query = "SELECT e FROM Employee AS e WHERE e.is_deleted = 0 AND e.employee_code = :employee_code "
                     + "AND e.password = :pass"
+            ),
+    @NamedQuery(
+            name = "getAllEmployeesNotDeleted",
+            query = "SELECT e FROM Employee AS e WHERE e.is_deleted = 0 order by e.id desc"
+
             )
 })
 @Entity

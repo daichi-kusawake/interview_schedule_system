@@ -131,3 +131,24 @@ select {
 h1 a {
     color: #eeeeee;
 }
+
+table#schedules_list th {
+    font-weight: bold;
+    padding: 10px 2%;
+}
+
+table#schedules_list .schedules_name {
+    width: 20%;
+    padding: 10px 2%;
+}
+table#schedules_list .schedules_date {
+    width: 20%;
+}
+
+table#schedules_list .schedules_title {
+    width: 37%;
+}
+
+table#schedules_list .schedules_action {
+    width: 13%;
+}
