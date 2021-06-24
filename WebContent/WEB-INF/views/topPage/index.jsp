@@ -12,7 +12,7 @@
 		<h2>面談予定管理システムへようこそ</h2>
 
 
-		<c:if test="${schedule != null }">
+		<c:if test="${schedules_count != 0 }">
 
 			<h3>【自分の面談予定 一覧】</h3>
 
