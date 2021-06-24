@@ -152,3 +152,6 @@ table#schedules_list .schedules_title {
 table#schedules_list .schedules_action {
     width: 13%;
 }
+pre {
+    font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
+}
