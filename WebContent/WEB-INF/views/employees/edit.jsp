@@ -5,7 +5,9 @@
         <c:choose>
             <c:when test="${employee != null}">
                 <h2>id : ${employee.id} の社員情報 編集ページ</h2>
+
                 <p>(パスワードは変更する場合のみ入力してください)</p>
+
                 <form method="POST" action="<c:url value='/employees/update' />">
                     <c:import url="_form.jsp" />
                 </form>

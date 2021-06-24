@@ -32,6 +32,8 @@ public class DepartmentsEditServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		//データベースにアクセスするためのオブジェクトを生成
 		EntityManager em = DBUtil.createEntityManager();
 
         Department d = em.find(Department.class, Integer.parseInt(request.getParameter("id")));
@@ -39,7 +41,9 @@ public class DepartmentsEditServlet extends HttpServlet {
         em.close();
 
         request.setAttribute("department", d);
+
         request.setAttribute("_token", request.getSession().getId());
+
         request.getSession().setAttribute("department_id", d.getId());
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/departments/edit.jsp");

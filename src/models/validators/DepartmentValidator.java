@@ -13,11 +13,13 @@ public class DepartmentValidator {
 
 	//部署情報登録・更新時の入力データの妥当性チェックを行う
 	public static List<String> validate(Department d, Boolean departmentCodeDuplicateCheckFlag) {
-        //エラーメッセージ格納用リストのインスタンス生成
+
+		//エラーメッセージ格納用リストのインスタンス生成
 		List<String> errors = new ArrayList<String>();
 
 		//部署コードチェックメソッドの呼び出し
         String code_error = validateDepartmentCode(d.getDepartment_code(), departmentCodeDuplicateCheckFlag);
+
         //code_errorが空でなけれがエラーメッセージリストに追加
         if(!code_error.equals("")) {
             errors.add(code_error);

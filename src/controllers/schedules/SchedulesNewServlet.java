@@ -45,17 +45,12 @@ public class SchedulesNewServlet extends HttpServlet {
 
         // 社員情報一覧表示のため社員情報テーブルのデータを取得する
         EntityManager em = DBUtil.createEntityManager();
-
-
-        List<Employee> employees = em.createNamedQuery("getAllEmployeesNotDeleted", Employee.class)
+        List<Employee> employees = em.createNamedQuery("getAllSalesEmployeesNotDeleted", Employee.class)
                 .getResultList();
         em.close();
 
         //全従業員を取得する
         request.setAttribute("employees", employees);
-
-        //リクエストスコープに営業の部署番号(01)をセット
-        request.setAttribute("sales_employees_code", "01");
 
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/schedules/new.jsp");

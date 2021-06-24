@@ -35,10 +35,11 @@
 <select name="sales_employee_id">
 
     <c:forEach var="sales_employee" items="${employees}">
-        <c:if test="${sales_employee.department.department_code == sales_employees_code}">
+
          <option value="${sales_employee.id}">${sales_employee.employee_code}:${sales_employee.employee_name}</option>
-         </c:if>
+
     </c:forEach>
+
 </select>
 <br /><br />
 

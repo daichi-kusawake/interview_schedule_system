@@ -11,7 +11,10 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+//アノテーションの部分
 @Table(name = "departments")
+
+//クエリとして認識してもらう
 @NamedQueries({
     @NamedQuery(
         name = "getAllDepartments",

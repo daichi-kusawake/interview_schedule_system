@@ -35,18 +35,26 @@ public class DepartmentsUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String _token = request.getParameter("_token");
+
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
             Department d = em.find(Department.class, (Integer)(request.getSession().getAttribute("department_id")));
 
-            // 現在の値と異なる部署コードが入力されていたら
-            // 重複チェックを行う指定をする
+            /** 現在の値と異なる部署コードが入力されていたら
+                重複チェックを行う指定をする**/
+
+            //チェックを行うフラグの変数
             Boolean codeDuplicateCheckFlag = true;
+
+
             if(d.getDepartment_code().equals(request.getParameter("department_code"))) {
-                codeDuplicateCheckFlag = false;
+            	//現在の部署コードと送られてきたデータが同じ場合はfalseを格納する
+            	codeDuplicateCheckFlag = false;
             } else {
+            	//それ以外は送られてきたコードを代入する
                 d.setDepartment_code(request.getParameter("department_code"));
             }
 
@@ -55,6 +63,7 @@ public class DepartmentsUpdateServlet extends HttpServlet {
             d.setIs_deleted(0);
 
             List<String> errors = DepartmentValidator.validate(d, codeDuplicateCheckFlag);
+
             if(errors.size() > 0) {
                 em.close();
 
@@ -62,7 +71,7 @@ public class DepartmentsUpdateServlet extends HttpServlet {
                 request.setAttribute("department", d);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/employees/edit.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/departments/edit.jsp");
                 rd.forward(request, response);
 
             } else {
