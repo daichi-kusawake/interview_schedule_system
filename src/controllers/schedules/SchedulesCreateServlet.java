@@ -57,7 +57,8 @@ public class SchedulesCreateServlet extends HttpServlet {
             s.setVendor(request.getParameter("vendor"));
             s.setOrdering_company(request.getParameter("ordering_company"));
 
-            //営業従業員の設定 従業員のIDを探して検索する
+            //営業従業員の設定 指定された従業員のIDを探してemployeeオブジェクトに格納する
+
             Employee sales_employee = em.find(Employee.class,
                     Integer.parseInt(request.getParameter("sales_employee_id")));
             s.setSales_employee(sales_employee);
@@ -207,11 +208,15 @@ public class SchedulesCreateServlet extends HttpServlet {
             s.setUpdated_at(currentTime);
             s.setIs_deleted(0);
 
+
+
             List<String> errors = ScheduleValidator.validate(s);
+
+            //入力エラーがあった場合
             if(errors.size() > 0) {
 
                 // 社員情報一覧表示のため社員情報テーブルのデータを取得する
-                List<Employee> employees = em.createNamedQuery("getAllEmployeesNotDeleted", Employee.class)
+                List<Employee> employees = em.createNamedQuery("getAllSalesEmployeesNotDeleted", Employee.class)
                         .getResultList();
                 request.setAttribute("employees", employees);
 

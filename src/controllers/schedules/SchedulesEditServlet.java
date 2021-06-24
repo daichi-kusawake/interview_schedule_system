@@ -39,7 +39,7 @@ public class SchedulesEditServlet extends HttpServlet {
         Schedule s = em.find(Schedule.class, Integer.parseInt(request.getParameter("id")));
 
         // 社員名一覧表示のため部署情報テーブルのデータを取得する
-        List<Employee> employees = em.createNamedQuery("getAllEmployeesNotDeleted", Employee.class)
+        List<Employee> employees = em.createNamedQuery("getAllSalesEmployeesNotDeleted", Employee.class)
                 .getResultList();
 
         em.close();
@@ -51,10 +51,10 @@ public class SchedulesEditServlet extends HttpServlet {
             request.setAttribute("sales_employees_code", "01");
 
             request.setAttribute("schedule", s);
-            
+
             request.setAttribute("_token", request.getSession().getId());
             request.getSession().setAttribute("schedule_id", s.getId());
-            request.setAttribute("sales_employees_code", "01");
+
         }
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/schedules/edit.jsp");

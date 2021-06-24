@@ -12,9 +12,9 @@
 
     </div>
 </c:if>
+<p><font color ="red">※ </font>は必ず入力してください</p>
 
-<br>
-<label for="project_title">案件名</label><br />
+<label for="project_title">案件名 <font color ="red" size =1.5>※</font></label><br />
 
 <input type="text" name="project_title" value="${schedule.project_title}" />
 <br /><br />
@@ -27,16 +27,15 @@
 <input type="text" name="vendor" value="${schedule.vendor}" />
 <br /><br />
 
-<label for="ordering_company">上位会社（発注元企業）</label><br />
+<label for="ordering_company">上位会社（発注元企業）<font color ="red" size =1.5>※</font></label><br />
 <input type="text" name="ordering_company" value="${schedule.ordering_company}" />
 <br /><br />
 
 <label for="sales_employee_id">担当営業</label><br />
 <select name="sales_employee_id">
-
     <c:forEach var="sales_employee" items="${employees}">
 
-         <option value="${sales_employee.id}">${sales_employee.employee_code}:${sales_employee.employee_name}</option>
+         <option value="${sales_employee.id}">${sales_employee.employee_code}：${sales_employee.employee_name}</option>
 
     </c:forEach>
 

@@ -49,7 +49,7 @@ public class SchedulesNewServlet extends HttpServlet {
                 .getResultList();
         em.close();
 
-        //全従業員を取得する
+        //全営業をセットする
         request.setAttribute("employees", employees);
 
 
