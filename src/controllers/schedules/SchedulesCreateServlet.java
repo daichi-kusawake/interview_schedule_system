@@ -219,6 +219,7 @@ public class SchedulesCreateServlet extends HttpServlet {
 
                 request.setAttribute("_token",request.getSession().getId());
                 request.setAttribute("schedule", s);
+                request.setAttribute("sales_employees_code", "01");
                 request.setAttribute("errors", errors);
 
                 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/schedules/new.jsp");

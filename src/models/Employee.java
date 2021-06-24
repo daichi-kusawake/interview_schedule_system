@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
             name = "getAllEmployees",
-            query = "SELECT e FROM Employee AS e ORDER BY e.id"
+            query = "SELECT e FROM Employee AS e ORDER BY e.id DESC"
             ),
     @NamedQuery(
             name = "getEmployeesCount",
@@ -35,9 +35,9 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "getAllEmployeesNotDeleted",
             query = "SELECT e FROM Employee AS e WHERE e.is_deleted = 0 order by e.id desc"
-
-            )
+            ),
 })
+
 @Entity
 public class Employee {
     @Id

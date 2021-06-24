@@ -46,11 +46,15 @@ public class SchedulesEditServlet extends HttpServlet {
 
         Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");
         if(s != null && login_employee.getId() == s.getEmployee().getId()) {
-            request.setAttribute("employees", employees);
+
+        	request.setAttribute("employees", employees);
+            request.setAttribute("sales_employees_code", "01");
 
             request.setAttribute("schedule", s);
+            
             request.setAttribute("_token", request.getSession().getId());
             request.getSession().setAttribute("schedule_id", s.getId());
+            request.setAttribute("sales_employees_code", "01");
         }
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/schedules/edit.jsp");

@@ -28,7 +28,7 @@ public class SchedulesNewServlet extends HttpServlet {
      */
     public SchedulesNewServlet() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 
@@ -51,7 +51,11 @@ public class SchedulesNewServlet extends HttpServlet {
                 .getResultList();
         em.close();
 
+        //全従業員を取得する
         request.setAttribute("employees", employees);
+
+        //リクエストスコープに営業の部署番号(01)をセット
+        request.setAttribute("sales_employees_code", "01");
 
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/schedules/new.jsp");

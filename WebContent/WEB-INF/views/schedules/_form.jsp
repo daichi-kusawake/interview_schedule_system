@@ -4,7 +4,7 @@
 
 <!-- エラーがリクエストスコープに格納されていた場合 -->
 <c:if test="${errors != null}">
-    <div id="${flush_error}">
+    <div id="flush_error">
         入力内容にエラーがあります。<br />
         <c:forEach var="error" items="${errors}">
             ・<c:out value="${error}" /><br />
@@ -13,7 +13,7 @@
     </div>
 </c:if>
 
-
+<br>
 <label for="project_title">案件名</label><br />
 
 <input type="text" name="project_title" value="${schedule.project_title}" />
@@ -33,9 +33,11 @@
 
 <label for="sales_employee_id">担当営業</label><br />
 <select name="sales_employee_id">
+
     <c:forEach var="sales_employee" items="${employees}">
-        <option value="${sales_employee.id}"<c:if test="${sales_employee.id == schedule.sales_employee.id}"> selected</c:if>>
-        ${sales_employee.employee_code} : ${sales_employee.employee_name}</option>
+        <c:if test="${sales_employee.department.department_code == sales_employees_code}">
+         <option value="${sales_employee.id}">${sales_employee.employee_code}:${sales_employee.employee_name}</option>
+         </c:if>
     </c:forEach>
 </select>
 <br /><br />
