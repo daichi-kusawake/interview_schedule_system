@@ -66,6 +66,7 @@ public class EmployeesCreateServlet extends HttpServlet {
 
 
             List<String> errors = EmployeeValidator.validate(e, true, true);
+
             if(errors.size() > 0) {
                 // 部署名一覧表示のため部署情報テーブルのデータを取得する
                 List<Department> departments = em.createNamedQuery("getAllDepartmentsNotDeleted", Department.class).getResultList();

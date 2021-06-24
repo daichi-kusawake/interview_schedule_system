@@ -58,6 +58,7 @@ public class Schedule {
     @Column(name = "ordering_company", length = 255, nullable = false)
     private String ordering_company;
 
+
     @ManyToOne
     @JoinColumn(name = "sales_employee_id", nullable = false)
     private Employee sales_employee;

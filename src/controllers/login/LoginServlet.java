@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet {
 
  // ログイン画面を表示
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		//リクエストスコープにデータをセット
 		request.setAttribute("_token", request.getSession().getId());
         request.setAttribute("hasError", false);
