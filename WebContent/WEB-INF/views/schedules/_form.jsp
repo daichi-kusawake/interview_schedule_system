@@ -34,9 +34,8 @@
 <label for="sales_employee_id">担当営業</label><br />
 <select name="sales_employee_id">
     <c:forEach var="sales_employee" items="${employees}">
-
-         <option value="${sales_employee.id}">${sales_employee.employee_code}：${sales_employee.employee_name}</option>
-
+        <option value="${sales_employee.id}"<c:if test="${sales_employee.id == schedule.sales_employee.id}"> selected</c:if>>
+        ${sales_employee.employee_code} : ${sales_employee.employee_name}</option>
     </c:forEach>
 
 </select>

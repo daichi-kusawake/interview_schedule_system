@@ -36,7 +36,7 @@
 
         <div id="pagination">
             <p>（全 ${departments_count} 件）</p>
-            <br />
+
             <c:forEach var="i" begin="1" end="${((departments_count - 1) / 15) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">

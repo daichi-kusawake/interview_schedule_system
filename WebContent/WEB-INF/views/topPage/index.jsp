@@ -81,9 +81,10 @@
 					</c:forEach>
 				</tbody>
 			</table>
-
+			<br>
 			<div id="paginattion">
 				(全 ${schedules_count} 件)<br />
+				<br>
 				<c:forEach var="i" begin="1"
 					end="${((schedules_count - 1) / 15) + 1}" step="1">
 					<c:choose>

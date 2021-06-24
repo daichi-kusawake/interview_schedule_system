@@ -14,6 +14,8 @@
                 <form method="POST" action="<c:url value='/departments/destroy' />">
                     <input type="hidden" name="_token" value="${_token}" />
                 </form>
+
+                <!-- 削除　許可-->
                 <script>
                     function confirmDestroy() {
                         if(confirm("本当に削除してよろしいですか？")) {
