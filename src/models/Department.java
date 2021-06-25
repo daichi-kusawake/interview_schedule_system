@@ -11,10 +11,10 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-//アノテーションの部分
+
 @Table(name = "departments")
 
-//クエリとして認識してもらう
+//主キー以外の項目などで検索し、複数件の結果を取得したい場合に定義する
 @NamedQueries({
     @NamedQuery(
         name = "getAllDepartments",
@@ -34,19 +34,22 @@ import javax.persistence.Table;
     )
 })
 
+//エンティティクラスと示唆
 @Entity
 public class Department {
+
+	//主キー値を自動採番すること
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    //nullableはnullの代入を許可するかどうか
     @Column(name = "department_code", nullable = false, unique = true)
     private String department_code;
 
     @Column(name = "department_name", nullable = false)
     private String department_name;
-
 
 
     @Column(name = "created_at", nullable = false)
