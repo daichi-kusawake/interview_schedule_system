@@ -50,18 +50,18 @@
 							<td class="schedule_aspiration_situation"><c:choose>
 									<c:when test="${schedule.aspiration_situation == 1}">志望する</c:when>
 									<c:when test="${schedule.aspiration_situation == 2}">志望しない</c:when>
-									<c:otherwise>（未入力）</c:otherwise>
+									<c:otherwise>検討中</c:otherwise>
 								</c:choose></td>
 							<td class="schedule_interview_situation"><c:choose>
 									<c:when test="${schedule.interview_situation == 1}">開始前</c:when>
 									<c:when test="${schedule.interview_situation == 2}">一次面談実施済</c:when>
 									<c:when test="${schedule.interview_situation == 3}">二次面談実施済</c:when>
-									<c:otherwise>（未入力）</c:otherwise>
+									<c:otherwise>未定</c:otherwise>
 								</c:choose></td>
 							<td class="schedule_pass_fail_status"><c:choose>
 									<c:when test="${schedule.pass_fail_status == 1}">合格</c:when>
 									<c:when test="${schedule.pass_fail_status == 2}">不合格</c:when>
-									<c:otherwise>（未入力）</c:otherwise>
+									<c:otherwise>未定</c:otherwise>
 								</c:choose></td>
 							<td class="schedule_first_interview_scheduled_date"><fmt:formatDate
 									value='${schedule.first_interview_scheduled_date}'
