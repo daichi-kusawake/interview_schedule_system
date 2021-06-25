@@ -44,7 +44,7 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    //nullableはnullの代入を許可するかどうか
+    //nullableはnullの代入を許可するかどうか　uniqueはユニークキーかどうか（重複ありかなしか指定）
     @Column(name = "department_code", nullable = false, unique = true)
     private String department_code;
 
