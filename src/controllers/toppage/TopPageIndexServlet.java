@@ -39,6 +39,7 @@ public class TopPageIndexServlet extends HttpServlet {
 			request.setAttribute("flush", request.getSession().getAttribute("flush"));
 			request.getSession().removeAttribute("flush");
 		}
+
 		EntityManager em = DBUtil.createEntityManager();
 		Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");
 
